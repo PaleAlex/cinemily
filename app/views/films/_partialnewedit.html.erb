@@ -1,0 +1,49 @@
+<div class="container">
+	<div class= "row justify-content-center">
+		<div class= "col-10">
+			<%= render 'shared/errors', obj: @film %>
+			<%= form_with(model: @film, class: "shadow p-3 mb-3 bg-secondary rounded", local: true) do |f| %>
+				<div class="form-group row">
+					<div class="col-10 offset-1">
+						<%= f.text_field :title, class: "form-control shadow rounded", placeholder: "Titolo del film" %>
+					</div>
+				</div>
+				<div class="form-group row">
+					<div class="col-10 offset-1">
+						<%= f.text_field :year, class: "form-control shadow rounded", placeholder: "Anno di produzione" %>
+					</div>
+				</div>
+				<div class="form-group row">
+					<div class="col-10 offset-1">
+						<%= f.text_field :director, class: "form-control shadow rounded", placeholder: "Regista" %>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<div class="col-10 offset-1">
+					<%= f.select :genre, options_for_select([
+					  ["Genere", ""],
+						"Animazione",
+						"Anime",
+						"Commedia",
+					  "Drammatico",
+						"Fantascienza",
+						"Fantasy",
+					  "Giallo",
+						"Guerra",
+						"Thriller"
+						]),
+					  {}, { class: "form form-group form-control shadow rounded" } %>
+					</div>
+				</div>
+
+				<div class="form-group row justify-content-center">
+				  <%= f.submit class: "btn btn-outline-light btn-lg", value: "Aggiungi" %>
+				</div>
+			<% end %>
+		</div>
+		<div class="mb-3">
+			<%= link_to '[Cancella e ritorna alla lista]', films_path, class: "text-secondary" %>
+		</div>
+	</div>
+</div>

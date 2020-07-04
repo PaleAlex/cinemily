@@ -1,0 +1,33 @@
+<h2 class= "text-center mt-4"><%= link_to @film.title, edit_film_path(@film), class: "text-dark" %></h2>
+<h6 class= "text-center mt-4 text-muted"><%= "#{@film.director} - #{@film.year} - " %> <i><%= " #{@film.genre}" %></i></h6>
+<hr class="my-4">
+<div class="container">
+  <%= link_to "Aggiungi recensione", new_article_path(:film_id => @film_save), class: "btn btn-success btn-lg btn-sm", role: "button"%>
+</div>
+
+<h6 class= "text-center mt-4"> Commenti </h6>
+
+<div class="container">
+  <% @film.articles.each do |a| %>
+    <div class="card mt-4 mb-4 col-12">
+      <div class="card-body">
+        <div class="card-text">
+
+            <strong>Link per user</strong>
+
+            <div class="container mt-2 col-8 float-right">
+              <%= simple_format(truncate(a.description, length: 420))%>
+              <%= link_to "[Leggi tutto]", article_path(a), class: "text-success float-right mt-3" %>
+            </div>
+
+
+        </div>
+        <small class="text-muted">
+          <%= link_to "Modifica recensione", edit_article_path(a), class: "text-success" %>
+          <p></p>
+          <i>Aggiunto: <%= time_ago_in_words(a.created_at) %> ago</i>
+        </small>
+      </div>
+    </div>
+  <% end %>
+</div>

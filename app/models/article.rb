@@ -1,6 +1,4 @@
 class Article < ApplicationRecord
-
-  validates :title, presence: true, length: {maximum: 100 }
-  validates :description, presence: true
-
+  belongs_to :film
+  validates :description, presence: true, length: { minimum: 100, maximum: 5000 }
 end
