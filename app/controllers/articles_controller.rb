@@ -8,6 +8,7 @@ before_action :set_article, only: [:show, :edit, :update, :destroy]
 
   def new
     @article = Article.new(:film_id => params[:film_id])
+    @article.user = current_user
   end
 
   def edit
@@ -44,7 +45,7 @@ before_action :set_article, only: [:show, :edit, :update, :destroy]
   end
 
   def whitelist_article_params
-    params.require(:article).permit(:title, :description, :film_id)
+    params.require(:article).permit(:title, :description, :film_id, :user_id)
   end
 
 end

@@ -1,0 +1,26 @@
+<h1 class= "text-center mt-4" id = "nome">Lista SCM</h1>
+
+<div class="container">
+  <% @users.each do |user| %>
+    <div class="card mt-4 col-12 mb-4">
+      <div class="card-body">
+        <div class="card-text">
+          <p>
+            <strong> <%= user.username %></strong>
+            <small class="text-muted float-right"><i>Iscritto: <%= user.created_at.strftime("%d %b. %Y") %></i>
+            </small>
+          </p>
+          <p>
+            <%= " Recensioni aggiunte: #{user.articles.count}" %>
+          </p>
+          <p>
+            Apprezzamenti ricevuti:
+            <small class="text-white float-right"><%= user.id %>
+            </small>
+          </p>
+
+        </div>
+      </div>
+    </div>
+   <% end %>
+  </div>

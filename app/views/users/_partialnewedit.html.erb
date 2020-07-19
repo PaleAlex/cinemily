@@ -1,0 +1,27 @@
+<div class="container">
+	<div class= "row justify-content-center">
+		<h4>Diventa un Super CineMan!</h4>
+		<div class= "col-10">
+			<%= render 'shared/errors', obj: @user %>
+			<%= form_with(model: @user, class: "shadow p-3 mb-3 bg-secondary rounded", local: true) do |f| %>
+				<div class="form-group row">
+					<div class="col-10 offset-1">
+						<%= f.text_field :username, class: "form-control shadow rounded", placeholder: "Username" %>
+					</div>
+				</div>
+				<div class="form-group row">
+					<div class="col-10 offset-1">
+						<%= f.email_field :email, class: "form-control shadow rounded", placeholder: "Email" %>
+					</div>
+				</div>
+				<div class="form-group row justify-content-center">
+					<%= f.submit(@user.new_record? ? "Iscriviti" : "Modifica dati personali", class: "btn btn-outline-light btn-lg") %>
+				</div>
+			<% end %>
+		</div>
+		<div class="mb-3">
+			<%= link_to(@user.new_record? ? "[Non vuoi iscriverti? Torna alla pagina principale]" : "[Cancella modifiche e torna alla pagina principale]", root_path, class: "text-secondary") %>
+			<%= link_to(@user.new_record? ? "|  [O se sei già iscritto, accedi!]" : "", login_path, class: "text-secondary") %>
+		</div>
+	</div>
+</div>

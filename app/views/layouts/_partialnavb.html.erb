@@ -1,27 +1,42 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <%= link_to "SUPER CineMAN", root_path, class: "navbar-brand", id: "logo" %>
+  <% if logged_in? %>
+    <%= link_to "Ciao, #{current_user.username}", root_path, class: "navbar-brand", id: "logo" %>
+  <% else %>
+    <%= link_to "Sei un Super Cineman?", signup_path, class: "navbar-brand", id: "logo" %>
+  <% end %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-      </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Film
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <%= link_to "Aggiungi nuovo +", new_film_path, class: "dropdown-item"%>
-          <%= link_to "Lista", films_path, class: "dropdown-item"%>
+          <% if logged_in? %>
+            <%= link_to "Aggiungi nuovo film", new_film_path, class: "dropdown-item"%>
+          <% else %>
+            <%= link_to "Aggiungi nuovo film", login_path, class: "dropdown-item"%>
+          <% end %>
+
+          <%= link_to "Lista film", films_path, class: "dropdown-item"%>
+
+          <%= link_to "Lista SCM", users_path, class: "dropdown-item"%>
           <div class="dropdown-divider"></div>
           <%= link_to "Manuale d'uso", about_path, class: "dropdown-item"%>
         </div>
       </li>
       <li class="nav-item">
-        <%= link_to "Rotten Tomatoes", "https://rottentomatoes.com", class: "nav-link"%>
+        <%= link_to "Rotten Tomatoes", "https://rottentomatoes.com", class: "nav-link", target: "_blank", rel: "noopener noreferrer" %>
       </li>
     </ul>
+      <% if logged_in? %>
+        <%= link_to "Esci", logout_path, class: "btn btn-outline-secondary", method: :delete %>
+      <% else %>
+        <%= link_to "Iscriviti!", signup_path, class: "btn btn-success btn-lg-sm mr-1" %>
+        <%= link_to "Accedi", login_path, class: "btn btn-success btn-lg-sm" %>
+      <% end %>
   </div>
 </nav>

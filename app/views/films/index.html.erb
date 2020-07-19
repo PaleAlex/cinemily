@@ -3,7 +3,7 @@
 <%= form_tag films_path, method: :get do %>
   <%= submit_tag("Cerca", title: :nil, class: "btn btn-success ml-4") %>
   <%= text_field_tag :search, params[:search], placeholder: "  Cerca per titolo...", class: "shadow rounded mt-1"%>
-  <%= link_to "Aggiungi nuovo film", new_film_path, class: "btn btn-success mr-4 float-right"%>
+  <%= link_to "Aggiungi nuovo film", new_film_path, class: "btn btn-success mr-4 float-right" if logged_in? %>
 
 <% end %>
 
@@ -19,8 +19,7 @@
             <%= "- #{film.genre}" %>
           </p>
         </div>
-        <small class="text-muted"><i>Aggiunto: <%= time_ago_in_words(film.created_at) %> ago,
-        modificato: <%= time_ago_in_words(film.updated_at) %> ago. </i>
+        <small class="text-muted"><i>Aggiunto: <%= time_ago_in_words(film.created_at) + " ago"%> </i>
         <%= link_to pluralize(film.articles.count, "review"), film_path(film), class: "text-success float-right" %>
         </small>
       </div>
