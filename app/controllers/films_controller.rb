@@ -17,7 +17,7 @@ class FilmsController < ApplicationController
   end
 
   def new
-    @film = Film.new
+    @film = Film.new(:user_id => params[:user_id])
   end
 
   def create
@@ -39,7 +39,7 @@ class FilmsController < ApplicationController
   private
 
   def whitelist_film_params
-    params.require(:film).permit(:title, :year, :director, :genre, :film_id, :search )
+    params.require(:film).permit(:title, :year, :director, :genre, :user_id, :search)
   end
 
 

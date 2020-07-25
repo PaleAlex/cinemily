@@ -6,5 +6,11 @@ module ApplicationHelper
   def logged_in?
     !!current_user
   end
-  
+
+  def ricava_username(numero)
+    @user = User.find(numero).username if numero
+  end
+
+
+
 end

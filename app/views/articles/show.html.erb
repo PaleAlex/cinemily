@@ -1,5 +1,4 @@
-<h2 class= "text-center mt-4"><%= @article.title %></h2>
-<h3><i><%= "Recensione aggiunta da " + @article.user.username if @article.user %></i></h3>
+<h3 class= "text-center mt-4"><%= "Recensione aggiunta da " + @article.user.username if @article.user %></h3>
 <div class="container">
   <div class="row justify-content-md-center">
     <div class="col-8 mt-4">
@@ -11,6 +10,14 @@
           <% if logged_in? && @article.user == current_user %>
             <%= link_to "Modifica", edit_article_path(@article), class: "btn btn-outline-info" %>
             <%= link_to "Cancella", article_path(@article), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
+          <% end %>
+          <% if logged_in? && @article.user != current_user %>
+            <% pre_like = @article.likes.find {|like| like.user_id == current_user.id} %>
+            <% if pre_like%>
+              <%= link_to 'Non apprezzare più', article_like_path(@article, pre_like), class: "text-secondary", method: :delete %>
+            <% else %>
+              <%= link_to 'Apprezza', article_likes_path(@article), class: "btn btn-outline-success sm", method: :post %>
+            <% end %>
           <% end %>
         </div>
         <div class="card-footer text-muted">

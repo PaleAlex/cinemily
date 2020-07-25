@@ -1,17 +1,13 @@
 # README
 
-
-<%= f.submit class: "btn btn-outline-light btn-lg", value: "Aggiungi" %>
-
-
-
-
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
+learning in progress..................
+
 Things you may want to cover:
 
-* Ruby version
+* Ruby version: 6
 
 * System dependencies
 

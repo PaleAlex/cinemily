@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   get 'signup', to: 'users#new'
   resources :users, except: [:new]
 
-  resources :articles, except: [:index]
+  resources :articles, except: [:index] do
+    resources :likes
+  end
 
   resources :films
   get 'login', to: 'sessions#new'

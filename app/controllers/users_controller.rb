@@ -34,7 +34,9 @@ class UsersController < ApplicationController
   end
 
   def index
+  
     @users = User.all
+    #da vedere come ordinare per recensioni aggiunte o simile
   end
 
 
