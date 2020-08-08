@@ -1,7 +1,7 @@
 class FilmsController < ApplicationController
 
   def index
-    @films = Film.where(["title LIKE ?","%#{params[:search]}%"]).order(created_at: :desc)
+    @films = Film.where(["title like ?","%#{params[:search]}%"]).order(created_at: :desc)
   end
 
   def show
