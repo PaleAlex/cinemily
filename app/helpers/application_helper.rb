@@ -12,17 +12,17 @@ module ApplicationHelper
     @user = User.find(numero).username if numero
   end
 
-  def already_commented(film)
-    @i=1
-    unless @i > film.articles.count
-      film.articles.each do |art|
-        if art.user == current_user
-          return true
-        else
-          @i = @i+1
-        end
-      end
-    end
-  end
+  #def already_commented(film)
+  #  @i=1
+  #  unless @i > film.articles.count
+  #    film.articles.each do |art|
+  #      if art.user == current_user
+  #        return true
+  #      else
+  #        @i = @i+1
+  #      end
+  #    end
+  #  end
+  #end
 
 end

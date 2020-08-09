@@ -2,7 +2,7 @@
 <h6 class= "text-center mt-4 text-muted"><%= "#{@film.director} - #{@film.year} - " %> <i><%= " #{@film.genre}" %></i></h6>
 <hr class="my-4">
 <div class="container">
-  <%= link_to "Aggiungi recensione", new_article_path(:film_id => @film_save), class: "btn btn-success btn-lg btn-sm", role: "button" if logged_in? && !already_commented(@film) %>
+  <%= link_to "Aggiungi recensione", new_article_path(:film_id => @film_save), class: "btn btn-success btn-lg btn-sm", role: "button" if logged_in? %>
 </div>
 
 <h6 class= "text-center mt-4"> Commenti </h6>
