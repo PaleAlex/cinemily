@@ -34,11 +34,18 @@ class UsersController < ApplicationController
   end
 
   def index
-  
+
     @users = User.all
     #da vedere come ordinare per recensioni aggiunte o simile
   end
 
+  def destroy
+    #session[:user_id] = nil
+    @user = User.find(params[:id])
+    @user.destroy
+    flash[:notice] = "User deleted succesfully"
+    redirect_to users_path
+  end
 
 
 
@@ -46,7 +53,7 @@ class UsersController < ApplicationController
     private
 
     def user_params
-      params.require(:user).permit(:username, :email)
+      params.require(:user).permit(:id, :username, :email)
     end
 
 end

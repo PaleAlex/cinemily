@@ -9,8 +9,10 @@ Rails.application.routes.draw do
     resources :likes
   end
 
+  resources :searches
   resources :films
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
+
 end

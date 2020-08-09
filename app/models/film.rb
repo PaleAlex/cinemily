@@ -10,14 +10,9 @@ class Film < ApplicationRecord
 
   def self.search(search)
     if search
-     film_type = Film.find_by(title: search.titleize)
-        if film_type
-          self.where(id: film_type.id)
-        else
-          @films = Film.all
-        end
+      where(["title LIKE ?","%#{search}%"])
     else
-      @films = Film.all
+      all
     end
   end
 

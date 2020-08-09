@@ -1,0 +1,33 @@
+<div class="container mt-4">
+
+  <h4> Risultati della ricerca avanzata</h4>
+
+  <p> <%= link_to '[Torna alla lista dei film]', films_path, class: "text-secondary" %> </p>
+
+  <% if @search.search_films.empty? %>
+
+    <p>Nessun film trovato corrispondente a quelle specifiche</p>
+
+  <% else %>
+
+
+    <% @search.search_films.each do |film| %>
+
+      <div class="card mt-4 col-12 mb-4">
+        <div class="card-body">
+          <div class="card-text">
+            <p>
+              <strong><%= link_to film.title, film_path(film), class: "text-success" %></strong>
+              <%= " di #{film.director}  -  " %>
+              <%= film.year %>
+              <%= "- #{film.genre}" %>
+            </p>
+          </div>
+          <small class="text-muted"><i>Aggiunto: <%= time_ago_in_words(film.created_at) + " ago da #{ricava_username(film.user_id)}" %> </i>
+          <%= link_to pluralize(film.articles.count, "review"), film_path(film), class: "text-success float-right" %>
+          </small>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

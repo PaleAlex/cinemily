@@ -1,13 +1,15 @@
 <h1 class= "text-center mt-4" id = "nome">Lista film</h1>
 
-<%= form_tag films_path, method: :get do %>
-  <%= submit_tag("Cerca", title: :nil, class: "btn btn-success ml-4") %>
+<%= form_tag films_path, :method => 'get' do %>
+  <%= submit_tag("Cerca", class: "btn btn-success ml-4") %>
   <%= text_field_tag :search, params[:search], placeholder: "  Cerca per titolo...", class: "shadow rounded mt-1"%>
-  <%= link_to "Aggiungi nuovo film", new_film_path(:user_id => current_user.id), class: "btn btn-success mr-4 float-right" if logged_in? %>
-
 <% end %>
+<%= link_to 'Ricerca avanzata...', new_search_path, class: "text-secondary ml-4" %>
 
 <div class="container">
+
+  <%= link_to "Aggiungi nuovo film", new_film_path(:user_id => current_user.id), class: "btn btn-success mb-2 float-right" if logged_in? %>
+
   <% @films.each do |film| %>
     <div class="card mt-4 col-12 mb-4">
       <div class="card-body">

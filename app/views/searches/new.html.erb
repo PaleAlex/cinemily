@@ -1,0 +1,40 @@
+<div class="container mt-4">
+
+
+  <h4> Ricerca avanzata...</h4>
+
+  <%= form_for @search, html: {class: "pure-form"} do |s| %>
+
+    <div class="field ml-4">
+      <%= s.label "Titolo" %><br />
+      <%= s.text_field :title %>
+    </div>
+
+    <div class="field ml-4">
+      <%= s.label :genre %><br />
+      <%= s.select :genre, options_for_select(@genres), include_blank: true  %>
+    </div>
+
+    <br />
+
+    <div class="field ml-4">
+      <p><%= s.label :min_year, "Da anno" %> - <%= s.text_field :min_year, size: 10 %></p>
+      <p><%= s.label :max_year, "a anno" %> - <%= s.text_field :max_year, size: 10 %></p>
+    </div>
+
+    <div class="field ml-4">
+      <%= s.label "Regista" %><br />
+      <%= s.text_field :director %>
+    </div>
+
+    <br />
+
+    <div class="actions ml-4"><%= s.submit "Cerca", class: "pure-button pure-button-primary" %></div>
+
+    <% end %>
+
+    <br />
+
+    <p> <%= link_to '[Torna alla lista dei film]', films_path, class: "text-secondary" %> </p>
+
+  </div>
