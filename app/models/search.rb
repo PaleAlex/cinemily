@@ -1,4 +1,6 @@
 class Search < ApplicationRecord
+  before_save { self.title = title.titleize }
+  before_save { self.director = director.titleize }
 
   def search_films
 
