@@ -23,7 +23,7 @@
             <%= "Film aggiunti: #{user.films.count}" %>
           </p>
           <p>
-            <%= "Apprezzamenti ricevuti: #{user.likes.count}" %>
+            <%= "Apprezzamenti ricevuti: #{count_likes_per_user(user)}" %>
             <small class="text-white float-right"><%= user.id %>
             </small>
           </p>

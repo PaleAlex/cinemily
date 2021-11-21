@@ -25,4 +25,12 @@ module ApplicationHelper
     end
   end
 
+  def count_likes_per_user(user)
+    @somma = 0
+    user.articles.each do |art|
+      @somma += art.likes.count
+    end
+    return @somma
+  end
+
 end
