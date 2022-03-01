@@ -1,6 +1,6 @@
 # README
 
-blog for movies (find link iin description). LANG = it
+blog for movies (find link in description). LANG = it
 
 to-do
 cercare di ordinare decrescente la lista user in fz del numero di recensioni scritte
